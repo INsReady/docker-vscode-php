@@ -1,2 +1,2 @@
-# docker-vscode-drupal
-Visual Studio Code in a container for Drupal development
+# docker-vscode-php
+Visual Studio Code in a container for PHP development
