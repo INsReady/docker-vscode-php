@@ -16,7 +16,7 @@ LABEL maintainer "Jingsheng Wang <skyred@insready.com>"
 # Install depedency
 RUN apt-get update && apt-get install -y \
 	apt-transport-https \
-	--no-install-recommends \
+	--no-install-recommends
 
 # Install vscode, see #https://code.visualstudio.com/docs/setup/linux
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg \
