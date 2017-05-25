@@ -23,7 +23,7 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > mic
 	&& mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg \
 	&& sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list' \
 	&& apt-get install -y \
-    code \
+    code-insiders \
 	--no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/*
 
