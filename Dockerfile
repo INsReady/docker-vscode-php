@@ -58,6 +58,7 @@ RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > mic
 	&& apt-get update && apt-get install -y \
     code \
 	--no-install-recommends \
+	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
 
 COPY start.sh /usr/local/bin/start.sh
