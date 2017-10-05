@@ -10,62 +10,52 @@
 #    --net="host" \
 #    insready/vscode-php
 
-FROM php:7.1
-LABEL maintainer "Jingsheng Wang <skyred@insready.com>"
+FROM php:7.2-rc
 
-# Install depedency
+# Tell debconf to run in non-interactive mode
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN apt-get update && apt-get install -y \
 	apt-transport-https \
+	ca-certificates \
+	curl \
 	gnupg \
+	--no-install-recommends
+
+# Add the vscode debian repo
+RUN curl -sSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | apt-key add -
+RUN echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list
+
+RUN apt-get update && apt-get -y install \
+	code \
 	libasound2 \
 	libatk1.0-0 \
 	libcairo2 \
 	libcups2 \
-	libdatrie1 \
-	libdbus-1-3 \
+	libexpat1 \
 	libfontconfig1 \
 	libfreetype6 \
-	libgconf-2-4 \
-	libgcrypt20 \
-	libgl1-mesa-dri \
-	libgl1-mesa-glx \
-	libgdk-pixbuf2.0-0 \
-	libglib2.0-0 \
 	libgtk2.0-0 \
-	libgpg-error0 \
-	libgraphite2-3 \
-	libnotify-bin \
-	libnss3 \
-	libnspr4 \
 	libpango-1.0-0 \
-	libpangocairo-1.0-0 \
+	libx11-xcb1 \
 	libxcomposite1 \
 	libxcursor1 \
-	libxdmcp6 \
+	libxdamage1 \
+	libxext6 \
+	libxfixes3 \
 	libxi6 \
 	libxrandr2 \
 	libxrender1 \
 	libxss1 \
 	libxtst6 \
-	liblzma5 \
-	libxkbfile1 \
-	--no-install-recommends
-
-# Install vscode, see #https://code.visualstudio.com/docs/setup/linux
-RUN curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg \
-	&& mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg \
-	&& sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list' \
-	&& apt-get update && apt-get install -y \
-    code \
 	--no-install-recommends \
-	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/*
-
-COPY start.sh /usr/local/bin/start.sh
 
 ENV HOME /home/user
 RUN useradd --create-home --home-dir $HOME user \
 	&& chown -R user:user $HOME
+
+COPY start.sh /usr/local/bin/start.sh
 
 WORKDIR $HOME
 
