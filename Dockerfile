@@ -55,6 +55,12 @@ ENV HOME /home/user
 RUN useradd --create-home --home-dir $HOME user \
 	&& chown -R user:user $HOME
 
+# package vscode extension for PHP dev
+ENV VSCODEEXT /var/vscode-ext
+RUN mkdir $VSCODEEXT \
+    && chown -R user:user $VSCODEEXT \
+	&& su user -c "code --extensions-dir $VSCODEEXT --install-extension felixfbecker.php-intellisense --install-extension felixfbecker.php-debug --install-extension whatwedo.twig"
+
 COPY start.sh /usr/local/bin/start.sh
 
 WORKDIR $HOME

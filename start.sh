@@ -2,5 +2,5 @@
 set -e
 set -o pipefail
 
-su user -c /usr/bin/editor
+su user -c "code --extensions-dir /var/vscode-ext"
 sleep infinity
