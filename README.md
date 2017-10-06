@@ -3,6 +3,7 @@ This docker image packages [Visual Studio Code](https://code.visualstudio.com/) 
 
 With this image, you don't need to install an "IDE" anymore, you simply run a Docker command, which will launch the `vscode`, creates the PHP enviroment, and then remove itself when you are done working.
 
+![Demo GIF](https://github.com/felixfbecker/vscode-php-debug/raw/master/images/demo.gif)
 
 ## How to use
 
