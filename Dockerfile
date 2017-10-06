@@ -1,14 +1,5 @@
 # Visual Studio Code in a container
 #	some of the code copied from https://github.com/jessfraz/dockerfiles/blob/master/vscode/Dockerfile
-#
-# docker run -d \
-#    -v /tmp/.X11-unix:/tmp/.X11-unix \
-#    -v $HOME:/home/user \
-#    -e DISPLAY=unix$DISPLAY \
-#    --device /dev/dri \
-#    --name vscode \
-#    --net="host" \
-#    insready/vscode-php
 
 FROM php:7.2-rc
 
@@ -53,7 +44,8 @@ RUN apt-get update && apt-get -y install \
 
 ENV HOME /home/user
 RUN useradd --create-home --home-dir $HOME user \
-	&& chown -R user:user $HOME
+    && mkdir /var/www/html -p \
+	&& chown -R user:user $HOME /var/www/html
 
 # package vscode extension for PHP dev
 ENV VSCODEEXT /var/vscode-ext
@@ -63,6 +55,6 @@ RUN mkdir $VSCODEEXT \
 
 COPY start.sh /usr/local/bin/start.sh
 
-WORKDIR $HOME
+WORKDIR /var/www/html
 
 CMD [ "start.sh" ]
