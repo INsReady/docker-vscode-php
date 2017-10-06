@@ -1,5 +1,5 @@
 ## Visual Studio Code for PHP
-This docker image packages [Visual Studio Code](https://code.visualstudio.com/) (`vscode`) with a curated list of extensions for PHP development. The goal of this image is to offer an easier, faster and free IDE, comparing to [Phpstorm](https://www.jetbrains.com/phpstorm/).
+This docker image packages [Visual Studio Code](https://code.visualstudio.com/) (`vscode`) with a curated list of extensions for PHP development. The goal of this image is to offer an easier, faster and free IDE, comparing to [PhpStorm](https://www.jetbrains.com/phpstorm/).
 
 With this image, you don't need to install an "IDE" anymore, you simply run a Docker command, which will launch the `vscode`, creates the PHP enviroment, and then remove itself when you are done working.
 
@@ -57,6 +57,7 @@ More documentation on this bit configuration can be fund [here](https://github.c
 ## Known issues
 
 * When you close the `vscode` UI, the container doesn't stop automatically. Therefore, you need to use `Ctrl+C` to stop the container therefore to remove it.
+* This image has only been tested on Linux. The --net="host" might not work on Mac, therefore it needs one more step tweek to get `Xdebug` work out of box.
 
 ## Contributing
 You are invited to contribute new features, fixes, or updates, large or small; we are always thrilled to receive pull requests, and do our best to process them as fast as we can.
