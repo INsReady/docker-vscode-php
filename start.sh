@@ -2,5 +2,4 @@
 set -e
 set -o pipefail
 
-su user -c "code . --extensions-dir /var/vscode-ext"
-sleep infinity
+su user -p -c "code . --extensions-dir /var/vscode-ext"
