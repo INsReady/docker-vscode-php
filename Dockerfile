@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
 	ca-certificates \
 	curl \
 	gnupg \
+	git \
 	--no-install-recommends
 
 # Add the vscode debian repo
