@@ -20,7 +20,7 @@ You can set up `bash` alias for the command above, for example:
 ```
 nano ~/.bashrc
 
-alias phpcode='docker run -ti --rm -v /tmp/.X11-unix:/tmp/.X11-unix -v "$PWD":/var/www/html -e DISPLAY=unix$DISPLAY --device /dev/dri --name vscode --net="host" insready/vscodphp'
+alias phpcode='docker run -ti --rm -v /tmp/.X11-unix:/tmp/.X11-unix -v "$PWD":/var/www/html -e DISPLAY=unix$DISPLAY --device /dev/dri --name vscode --net="host" insready/vscode-php'
 
 source ~/.bashrc
 ```
