@@ -1,7 +1,7 @@
 # Visual Studio Code in a container
 #	some of the code copied from https://github.com/jessfraz/dockerfiles/blob/master/vscode/Dockerfile
 
-FROM php:7.2
+FROM php:7.3
 
 # Tell debconf to run in non-interactive mode
 ENV DEBIAN_FRONTEND noninteractive
