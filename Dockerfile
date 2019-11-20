@@ -52,7 +52,7 @@ RUN useradd --create-home --home-dir $HOME user \
 ENV VSCODEEXT /var/vscode-ext
 RUN mkdir $VSCODEEXT \
     && chown -R user:user $VSCODEEXT \
-	&& su user -c "code --extensions-dir $VSCODEEXT --install-extension felixfbecker.php-intellisense --install-extension felixfbecker.php-debug --install-extension whatwedo.twig"
+	&& su user -c "code --extensions-dir $VSCODEEXT --install-extension felixfbecker.php-intellisense --install-extension felixfbecker.php-debug --install-extension whatwedo.twig --install-extension ikappas.phpcs"
 
 COPY start.sh /usr/local/bin/start.sh
 

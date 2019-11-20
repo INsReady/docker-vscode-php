@@ -12,7 +12,7 @@ With this image, you don't need to install an "IDE" anymore, you simply run a Do
 To launch the "IDE" and set the current folder as the root of your application:
 
 ```console
-$ docker run -ti --rm -v /tmp/.X11-unix:/tmp/.X11-unix -v "$PWD":/var/www/html -e DISPLAY=unix$DISPLAY --device /dev/dri --name vscode --net="host" insready/vscode-php
+$ docker run -ti --rm --privileged -v /tmp/.X11-unix:/tmp/.X11-unix -v "$PWD":/var/www/html -e DISPLAY=unix$DISPLAY --device /dev/dri --name vscode --net="host" insready/vscode-php
 ```
 
 You can set up `bash` alias for the command above, for example:
@@ -20,7 +20,7 @@ You can set up `bash` alias for the command above, for example:
 ```
 nano ~/.bashrc
 
-alias phpcode='docker run -ti --rm -v /tmp/.X11-unix:/tmp/.X11-unix -v "$PWD":/var/www/html -e DISPLAY=unix$DISPLAY --device /dev/dri --name vscode --net="host" insready/vscode-php'
+alias phpcode='docker run -ti --rm --privileged -v /tmp/.X11-unix:/tmp/.X11-unix -v "$PWD":/var/www/html -e DISPLAY=unix$DISPLAY --device /dev/dri --name vscode --net="host" insready/vscode-php'
 
 source ~/.bashrc
 ```
@@ -52,6 +52,7 @@ More documentation on this bit configuration can be fund [here](https://github.c
 
 * [PHP IntelliSense](https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-intellisense)
 * [PHP Debug](https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-debug)
+* [PHP CodeSniffer](https://marketplace.visualstudio.com/items?itemName=ikappas.phpcs)
 * [Twig](https://marketplace.visualstudio.com/items?itemName=whatwedo.twig)
 
 ## Known issues
